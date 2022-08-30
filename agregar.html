@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Agregar Palabra</title>
+    <link rel="shortcut icon" href="img/alura-logo-pestaña-celeste.png" />
+    <link rel="stylesheet" type="text/css" href="reset.css">
+    <link rel="stylesheet" type="text/css" href="agregar.css">
+    <!-- <link rel="stylesheet" type="text/css" href="inicio.css"> -->
+    <!--Font Awesome-->
+    <script defer src="https://use.fontawesome.com/releases/v5.15.4/js/all.js"
+        integrity="sha384-rOA1PnstxnOBLzCLMcre8ybwbTmemjzdNlILg8O7z1lUkLXozs4DHonlDtnE7fpc"
+        crossorigin="anonymous"></script>
+        <!-- <script type="text/javascript" src="palabras.js"> -->
+        </script>
+</head>
+
+<body class="cuerpo">
+
+    <div class="contenedor-ppal">
+
+        <div class="contenedor-logo-menus">
+
+            <div class="contenedor-logo"><a rel="noreferrer noopener" href="https://www.aluracursos.com/"
+                    target="_blank" title="Alura"><img id="logo-alura" src="img/Logo.svg" alt="Logo Alura"></a>
+            </div>
+
+            <div class="menu">
+                <ul class="lista-menu">
+                    <li class="opcion1">
+                        <!--<img src="img/Page icon.svg" alt="Cómo funciona">-->
+                        <i onclick="showRules()" class="fas fa-cog" id="info" title="Reglas"></i>
+                    </li>
+                    <li class="opcion2">
+                        <!--<img src="img/Page icon2.svg" alt="Acerca de">-->
+                        <i onclick="showInfo()" class="fas fa-info-circle" id="acerca-de" title="Acerca de"></i>
+                    </li>
+                </ul>
+                </ul>
+            </div>
+
+            <div id="contenedor-dialogo-info" class="contenedor-dialogs" style="display: none;">
+                <dialog id="info-dialog">
+                    <div class="contenedor-close-info"><i onclick="closeWindow()" class="fas fa-window-close"
+                            id="close-info"></i></div>
+                    <div class="cont-text-dialog-info">
+                        <p class="t-dialog-info">Hola! Mi nombre es Daniel De Blassis y creé esta aplicación que
+                            corresponde al challenge #2 del
+                            programa Alura ONE.</p><br>
+                        <p class="t-dialog-info"><a href="https://github.com/DanielDeBlassis/2_Juego_Ahorcado"
+                                target="_blank" rel="nofollow noreferrer noopener">Aquí</a> puedes encontrar el
+                            repositorio del proyecto.
+                        </p>
+                    </div>
+                </dialog>
+            </div>
+
+            <div id="contenedor-dialogo-rules" class="contenedor-dialogs" style="display: none;">
+                <dialog id="rules-dialog">
+                    <div class="contenedor-close-info"><i onclick="closeWindow()" class="fas fa-window-close"
+                            id="close-reglas"></i></div>
+                    <div class="cont-text-dialog-rules">
+                        <h2>Challenge #2 <b>Juego del Ahorcado</b></h2><br>
+                        <h5>-Requisitos:</h5><br>
+                        <ul class="lista">
+                            <li>Debe funcionar solo con letras mayúsculas;</li>
+                            <li>No deben ser utilizadas letras con acentos ni caracteres especiales;</li>
+                            <li>Al completar o dibujo de la horca, debe ser mostrado un mensaje "Fin del juego" en la
+                                pantalla;</li>
+                            <li>Si se completa la palabra correcta antes de que se acaben los intentos, debe ser
+                                mostrado un mensaje de "Ganaste, Felicidades!" en la pantalla.</li>
+                            <li>La página debe tener los guiones indicando cada letra da palabra, separados por un
+                                espacio;</li>
+                            <li>Para comenzar el juego la página debe tener un botón de "Iniciar Juego";</li>
+                            <li>No debe ser posible escribir números dentro del juego.</li>
+                            <li>Las letras equivocadas deben aparecer en la pantalla, pero no pueden aparecer de forma
+                                repetida;</li>
+                            <li>Las letras correctas deben aparecer en la pantalla encima de los guiones, en la posición
+                                correcta em relación a la palabra.</li>
+                        </ul><br>
+                        <h5>-Extras:</h5><br>
+                        <ul class="lista">
+                            <li>La página debe tener un campo para inserción de texto con la finalidad de adicionar
+                                nuevas palabras al juego, e un botón "Agregar palabra".</li>
+                        </ul>
+                    </div>
+                </dialog>
+            </div>
+
+                        <div id="contenedor-dialogo-success" class="contenedor-dialogs" style="display: none;">
+                <dialog id="success-dialog">
+                    <div class="contenedor-close-info"><i onclick="closeWindow()" class="fas fa-window-close"
+                            id="close-info"></i></div>
+                    <div class="cont-text-dialog-success">
+                        <p>Palabra Agregada &nbsp;</p>
+                        <i class="fas fa-check-circle" id="logo-success"></i>
+                    </div>
+                </dialog>
+            </div>
+
+            <div id="contenedor-dialogo-error" class="contenedor-dialogs" style="display: none;">
+                <dialog id="error-dialog">
+                    <div class="contenedor-close-info"><i onclick="closeWindow()" class="fas fa-window-close"
+                            id="close-info"></i></div>
+                    <div class="cont-text-dialog-error">
+                        <p>Error! Esa palabra ya fue agregada...intente con otra. &nbsp;</p>
+                        <i class="fas fa-exclamation-triangle" id="logo-error"></i>
+                    </div>
+                </dialog>
+            </div>
+
+            <div id="contenedor-dialogo-error-null" class="contenedor-dialogs" style="display: none;">
+                <dialog id="error-null-dialog">
+                    <div class="contenedor-close-info"><i onclick="closeWindow()" class="fas fa-window-close"
+                            id="close-info"></i></div>
+                    <div class="cont-text-dialog-error-null">
+                        <p>Error! El campo está vacío. &nbsp;</p>
+                        <i class="fas fa-exclamation-triangle" id="logo-error-null"></i>
+                    </div>
+                </dialog>
+            </div>
+
+            <div class="menu-idioma">
+                <ul class="menu-idioma-lista">
+                    <li class="opcion-idioma espania">
+                        <div class="elipse">
+                            <img onclick="cambiarEspaniol()" id="spain" src="img/spain.png" class="img-idioma espania"
+                                alt="Español">
+                        </div>
+                    </li>
+                    <li class="opcion-idioma brazil">
+                        <div class="elipse">
+                            <img onclick="cambiarPortugues()" src="img/brazil.png" id="brasil"
+                                class="img-idioma portugal" alt="Portugués">
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+
+
+        <form class="formulario">
+            <div class="contenedor-formulario">
+
+                <div class="contenedor-textarea">
+                    <textarea onkeypress="return soloLetras(event)" id="areaTexto" name="textoIngresado"
+                        class="textarea" placeholder="Máximo 8 letras..."
+                        onkeyup="javascript:this.value=this.value.toUpperCase();" required pattern="A-Z"
+                        maxlength="8"></textarea>
+                </div>
+
+                <div class="contenedor-aclaracion" id="cont-advert">
+                    <p class="texto-advertencia"><i id="exclamacion" class="fa fa-exclamation-circle"
+                            aria-hidden="true"></i> Máximo 8 letras</p>
+                </div>
+
+                <div class="contenedor-botones">
+                    <div class="contenedor-boton-agregar">
+                        <button id="btn-agregar" class="boton agregar" type="button" onclick="agregar(event)">
+                            <p class="texto-boton-agregar">Añadir Palabra</p>
+                        </button>
+                    </div>
+                    <div class="contenedor-boton-guardar">
+                        <button id="btn-guardar" class="boton guardar" type="button" onclick="guardarEmpezar(event)">
+                            <p class="texto-boton-guardar">Guardar y Empezar</p>
+                        </button>
+                    </div>
+                    <div class="contenedor-boton-cancelar">
+                        <button id="btn-cancelar" class="boton cancelar" type="button" onclick="cancelar(event)">
+                            <p class="texto-boton-cancelar">Cancelar</p>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <footer id="footer">
+        <p id="creditos">&copy Íconos de España y Brasil creados por Freepik - <a
+                href="https://www.flaticon.com/authors/freepik" target="_blank"
+                rel="nofollow noreferrer noopener"><em>Flaticon</em></a></p>
+    </footer>
+
+    <script src="agregar.js"></script>
+   <!-- <script src="inicio.js"></script>  verificar conflictos-->
+</body>
+
+</html>
