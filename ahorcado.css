@@ -269,6 +269,29 @@ body::-webkit-scrollbar-thumb {
     font-weight: 600;
 }
 
+/*Botón e Input Comprobar*/
+input#letra-comprobar {
+    border-color: cornflowerblue;
+    border-radius: 10px;
+}
+
+input#letra-comprobar:focus {
+    border-color: cornflowerblue;
+    border-radius: 10px;
+}
+
+button#btn-comprobar {
+    background: cornflowerblue;
+    color: white;
+    border-color: cornflowerblue;
+    border-radius: 10px;
+}
+button#btn-comprobar:hover {
+    cursor: pointer;
+    background: #246bea;
+    box-shadow: 0px 8px 24px rgb(0 0 0 / 55%);
+}
+
 /*IDIOMAS*/
 .img-idioma {
     width: 2rem;
@@ -791,6 +814,13 @@ dialog#fail {
         top: 230px;
     }
 
+    div#contenedor-comprobar {
+    position: absolute;
+    width: auto;
+    top: 80%;
+    left: 30%;
+}
+
 }
 
 
@@ -846,6 +876,13 @@ dialog#fail {
 input#entrada {
     position: absolute;
     left: 30%;
+}
+
+div#contenedor-comprobar {
+    position: absolute;
+    width: 100%;
+    top: 80%;
+    left: 15%;
 }
 
 .contenedor-formulario {
@@ -946,7 +983,7 @@ color: green;
     width: auto;
     height: auto;
     left: 5%;
-    top: 81%;
+    top: 82%;
 }
 
     .menu {

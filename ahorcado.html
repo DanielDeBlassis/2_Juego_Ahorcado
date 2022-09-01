@@ -144,10 +144,13 @@
                 <textarea id="letras-ausentes" title="Letras que no están..." pattern="[A-Za-z]"
                 onkeypress='return soloLetras(event);' disabled></textarea>
 
-                            <input type="text" onkeypress="return soloLetras(event)" pattern="[a-zA-Z]"
-            onkeyup="javascript:this.value=this.value.toUpperCase();"
-             
+                <div id="contenedor-comprobar">
+
+                            <input autofocus id="letra-comprobar" type="text" onkeypress="return soloLetras(event)" pattern="[a-zA-Z]"
+            onkeyup="javascript:this.value=this.value.toUpperCase();" 
             maxlength="1" placeholder="Ingrese letra" id="entrada">
+            <button id="btn-comprobar" type="button" onclick="comprobar()">Comprobar</button>
+            </div>
 
             </div>
 

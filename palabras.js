@@ -44,6 +44,7 @@ diccionario = [
 
 var nuevasPalabras = JSON.parse(localStorage.getItem("palabrasAgregadas"));
 
+
 for(let i = 0; i < nuevasPalabras.length; i++){
     diccionario.push(nuevasPalabras[i]);
 }
