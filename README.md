@@ -4,9 +4,9 @@
  
 En este primer mes vamos a trabajar en un proyecto de juego del ahorcado para que pongas en práctica lo que aprendiste a lo largo de esta formación Principiante en Programación.  
 
-## Requisitos:  
-
 ---
+
+## Requisitos:  
 
 - Debe funcionar solo con letras mayúsculas;  
 - No deben ser utilizadas letras con acentos ni caracteres especiales;  
@@ -18,8 +18,8 @@ En este primer mes vamos a trabajar en un proyecto de juego del ahorcado para qu
 - Las letras equivocadas deben aparecer en la pantalla, pero no pueden aparecer de forma repetida;  
 - Las letras correctas deben aparecer en la pantalla encima de los guiones, en la posición correcta en relación a la palabra.  
 
-## Extras:  
-
 ---
+
+## Extras:  
 
 - La página debe tener un campo para inserción de texto con la finalidad de adicionar nuevas palabras al juego, e un botón "Agregar palabra".  
