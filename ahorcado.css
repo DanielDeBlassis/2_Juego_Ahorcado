@@ -514,6 +514,7 @@ dialog#lose-dialog {
 /*botón close dialog*/
 #close-reglas {
     position: relative;
+    float: right;
 }
 
 #close-reglas:hover {

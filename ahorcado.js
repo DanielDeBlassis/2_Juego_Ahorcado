@@ -23,7 +23,7 @@ function pintaInputs() {
     var guiones = "";
 
     for (let i = 0; i < palabraAzar.length; i++) {
-        guiones += `<input id="${'posicion' + i}" type="text" class="input" maxlength="1" value="" onkeypress="return soloLetras(event)" onkeyup="javascript:this.value=this.value.toUpperCase();" required pattern="A-Za-z" title="Ingrese Letra"></input>`; //muestra el valor <input type="text" class="input" maxlength="1" value="${palabraAzar[i]}" onkeypress="return soloLetras(event)" onkeyup="javascript:this.value=this.value.toUpperCase();" onkeyup="if (this.value.length == this.getAttribute('maxlength')){ input2.focus()}" required pattern="A-Za-z" title="Ingrese Letra"></input>
+        guiones += `<input id="${'posicion' + i}" type="text" class="input" maxlength="1" value="" onkeypress="return soloLetras(event)" onkeypress='return (event.keyCode >= 65 && event.keyCode <= 90);'  onkeyup="javascript:this.value=this.value.toUpperCase();" required pattern="[A-Za-z]" title="Ingrese Letra" disabled>`; //muestra el valor <input type="text" class="input" maxlength="1" value="${palabraAzar[i]}" onkeypress="return soloLetras(event)" onkeyup="javascript:this.value=this.value.toUpperCase();" onkeyup="if (this.value.length == this.getAttribute('maxlength')){ input2.focus()}" required pattern="A-Za-z" title="Ingrese Letra"></input>
     }
 
     areaInput.innerHTML = guiones;
@@ -35,10 +35,68 @@ var letrasIngresadas = [];
 
 var intento = 1;
 
+// document.addEventListener("keydown", function (event) {
+//     console.log(event);
+//     //capturo la tecla
+//     var tecleo = event.key;
+
+//     //capturo area de imagen de patíbulo
+//     var imgPatibulo = document.getElementById("cont-patibulo");
+
+//     //capturo area de palabras ausentes
+//     var areaAusentes = document.getElementById("letras-ausentes");
+
+//     if (intento < 7 && soloLetras(event)) {
+//         if (letraEsta(tecleo)) {
+//             if (yaFueTecleado(tecleo.toUpperCase())) {
+//                 alert("Ya fue tecleado.");
+//             } else {
+//                 colocarLetra(tecleo.toUpperCase());
+//                 letrasIngresadas.push(tecleo.toUpperCase());
+
+//                 if(palabraAzar.length === aciertos){
+//                     showWin();
+//                     showWinMessage();
+//                     intentos = 8;
+//                 }
+//             }
+
+//         } else {
+//             //agrego las letras ingresadas a un array para verificar y no descontar intentos
+//             if (yaFueTecleado(tecleo.toUpperCase())) {
+//                 alert("Ya fue tecleado. Pruebe con otra letra.");
+//             } else {
+//                 imgPatibulo.innerHTML = `<img src="${'img/patibulo-' + intento + '.svg'}" alt="Patíbulo" title="Patíbulo">`;
+//                 areaAusentes.value += tecleo.toUpperCase() + " ";
+//                 letrasIngresadas.push(tecleo.toUpperCase());
+//                 intento += 1;
+//             }
+//         }
+//     }else if(intento === 7){
+//         imgPatibulo.innerHTML = `<img src="${'img/patibulo-' + intento + '.svg'}" alt="Patíbulo" title="Patíbulo">`;
+//         areaAusentes.value += tecleo.toUpperCase() + " ";
+//         showLose();
+//         showLoseMessage();
+//         intento += 1;
+//         imgPatibulo.innerHTML = `<img src="img/patibulo-8.png" alt="Patíbulo" title="Patíbulo">`;
+//     }
+
+// });
+
 document.addEventListener("keydown", function (event) {
     console.log(event);
-    //capturo la tecla
-    var tecleo = event.key;
+
+    tecla = (document.all) ? event.keyCode : event.which;
+    //Tecla de retroceso para borrar, siempre la permite
+    if (tecla == 8) {
+        return true;
+    }
+    //Solo se aceptan letras
+    patron = /[A-Za-z]/;
+
+    tecla_final = String.fromCharCode(tecla);
+    
+    if(patron.test(tecla_final)){
 
     //capturo area de imagen de patíbulo
     var imgPatibulo = document.getElementById("cont-patibulo");
@@ -46,13 +104,13 @@ document.addEventListener("keydown", function (event) {
     //capturo area de palabras ausentes
     var areaAusentes = document.getElementById("letras-ausentes");
 
-    if (intento < 7 && soloLetras(event)) {
-        if (letraEsta(tecleo)) {
-            if (yaFueTecleado(tecleo.toUpperCase())) {
+    if (intento < 7 && patron.test(tecla_final)) {
+        if (letraEsta(tecla_final)) {
+            if (yaFueTecleado(tecla_final.toUpperCase())) {
                 alert("Ya fue tecleado.");
             } else {
-                colocarLetra(tecleo.toUpperCase());
-                letrasIngresadas.push(tecleo.toUpperCase());
+                colocarLetra(tecla_final.toUpperCase());
+                letrasIngresadas.push(tecla_final.toUpperCase());
 
                 if(palabraAzar.length === aciertos){
                     showWin();
@@ -63,22 +121,24 @@ document.addEventListener("keydown", function (event) {
 
         } else {
             //agrego las letras ingresadas a un array para verificar y no descontar intentos
-            if (yaFueTecleado(tecleo.toUpperCase())) {
+            if (yaFueTecleado(tecla_final.toUpperCase())) {
                 alert("Ya fue tecleado. Pruebe con otra letra.");
             } else {
                 imgPatibulo.innerHTML = `<img src="${'img/patibulo-' + intento + '.svg'}" alt="Patíbulo" title="Patíbulo">`;
-                areaAusentes.value += tecleo.toUpperCase() + " ";
-                letrasIngresadas.push(tecleo.toUpperCase());
+                areaAusentes.value += tecla_final.toUpperCase() + " ";
+                letrasIngresadas.push(tecla_final.toUpperCase());
                 intento += 1;
             }
         }
     }else if(intento === 7){
         imgPatibulo.innerHTML = `<img src="${'img/patibulo-' + intento + '.svg'}" alt="Patíbulo" title="Patíbulo">`;
-        areaAusentes.value += tecleo.toUpperCase() + " ";
+        areaAusentes.value += tecla_final.toUpperCase() + " ";
         showLose();
         showLoseMessage();
         intento += 1;
         imgPatibulo.innerHTML = `<img src="img/patibulo-8.png" alt="Patíbulo" title="Patíbulo">`;
+    }
+
     }
 
 });
@@ -132,16 +192,15 @@ function letraTecleada() {
 // ////////////VALIDACIÓN DEL TEXTAREA////////////
 //comprueba que solo sean ingresadas letras
 function soloLetras(event) {
-    tecla = (document.all) ? event.keyCode : event.which;
 
+    tecla = (document.all) ? event.keyCode : event.which;
     //Tecla de retroceso para borrar, siempre la permite
     if (tecla == 8) {
         return true;
     }
-
     //Solo se aceptan letras
-    // patron = /[A-Za-z]/;
-    patron = /[^A-Z\d-]/;
+    patron = /[A-Za-z]/;
+
     tecla_final = String.fromCharCode(tecla);
     return patron.test(tecla_final);
 }
@@ -267,6 +326,10 @@ function showInfo() {
 function showLose() {
     ventana = document.getElementById("lose-dialog");
     contDialogo = document.getElementById('contenedor-juego-perdido');
+    ventana.innerHTML = `<div class="contenedor-close-info">
+                          <i onclick="closeWindow()" class="fas fa-window-close" id="close-reglas"></i>
+                          <h1>Fin del Juego</h1><br>
+                          <p>La palabra era: ${palabraAzar}</p></div>`;
     contDialogo.style.removeProperty("display");
     contDialogo.style.display = "block";
 

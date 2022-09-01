@@ -4,15 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Juego del Ahorcado</title>
+    <title>Inicio - Juego Ahorcado</title>
     <link rel="shortcut icon" href="img/alura-logo-pestaña-celeste.png" />
     <link rel="stylesheet" type="text/css" href="reset.css">
-    <link rel="stylesheet" type="text/css" href="ahorcado.css">
+    <link rel="stylesheet" type="text/css" href="inicio.css">
     <!--Font Awesome-->
     <script defer src="https://use.fontawesome.com/releases/v5.15.4/js/all.js"
         integrity="sha384-rOA1PnstxnOBLzCLMcre8ybwbTmemjzdNlILg8O7z1lUkLXozs4DHonlDtnE7fpc"
         crossorigin="anonymous"></script>
-    <script type="text/javascript" src="palabras.js"></script>
 </head>
 
 <body class="cuerpo">
@@ -44,7 +43,7 @@
                     <div class="contenedor-close-info"><i onclick="closeWindow()" class="fas fa-window-close"
                             id="close-info"></i></div>
                     <div class="cont-text-dialog-info">
-                        <p class="t-dialog-info">Hola! Mi nombre es Daniel De Blassis y cree esta aplicación que
+                        <p class="t-dialog-info">Hola! Mi nombre es Daniel De Blassis y creé esta aplicación que
                             corresponde al challenge #2 del
                             programa Alura ONE.</p><br>
                         <p class="t-dialog-info"><a href="https://github.com/DanielDeBlassis/2_Juego_Ahorcado"
@@ -65,7 +64,7 @@
                         <ul class="lista">
                             <li>Debe funcionar solo con letras mayúsculas;</li>
                             <li>No deben ser utilizadas letras con acentos ni caracteres especiales;</li>
-                            <li>Al completar o dibujo de la horca, debe ser mostrado un mensaje "Fin del juego" en la
+                            <li>Al completar el dibujo de la horca, debe ser mostrado un mensaje "Fin del juego" en la
                                 pantalla;</li>
                             <li>Si se completa la palabra correcta antes de que se acaben los intentos, debe ser
                                 mostrado un mensaje de "Ganaste, Felicidades!" en la pantalla.</li>
@@ -87,24 +86,6 @@
                 </dialog>
             </div>
 
-            <div id="contenedor-juego-perdido" class="contenedor-dialogs" style="display: none;">
-                <dialog id="lose-dialog">
-                    <div class="contenedor-close-info"><i onclick="closeWindow()" class="fas fa-window-close"
-                            id="close-reglas"></i>
-                    </div>
-                    <h1>Fin del Juego</h1><br>
-                </dialog>
-            </div>
-
-            <div id="contenedor-juego-ganado" class="contenedor-dialogs" style="display: none;">
-                <dialog id="win-dialog">
-                    <div class="contenedor-close-info"><i onclick="closeWindow()" class="fas fa-window-close"
-                            id="close-reglas"></i>
-                    </div>
-                    <h1>Ganaste, felicidades!</h1>
-                </dialog>
-            </div>
-
             <div class="menu-idioma">
                 <ul class="menu-idioma-lista">
                     <li class="opcion-idioma espania">
@@ -123,41 +104,21 @@
             </div>
         </div>
 
-        <div class="contenedor-patibulo" id="cont-patibulo">
-            <img src="img/patibulo.png" alt="Patíbulo" title="Patíbulo">
 
-        </div>
-                    <div id="mensaje-lose" style="display: none;">Fin del Juego</div>
-            <div id="mensaje-win" style="display: none;">Ganaste, Felicidades!</div>
 
         <form class="formulario">
-            <div class="contenedor-formulario" id="contenedor-guiones">
-
-            </div>
-
-<!--             <input type="text" onkeypress="return soloLetras(event)" pattern="[a-zA-Z]"
-            maxlength="1">
-            <textarea type="text" onkeypress="soloLetras(event)" maxlength="2"></textarea> -->
-
-            <!-- Letras que no están -->
-            <div class="contenedor-letras-ausentes">
-                <textarea id="letras-ausentes" title="Letras que no están..." pattern="[A-Za-z]"
-                onkeypress='return soloLetras(event);' disabled></textarea>
-            </div>
-
-            <dialog id="fail">
-                <i class="fas fa-exclamation-triangle"></i><span id="fail-text">&nbsp; Ingrese texto</span>
-            </dialog>
-
             <div class="contenedor-botones">
-                <button id="btn-nuevo" class="boton nuevo" type="button">
-                    <p class="texto-boton-nuevo" onclick="nuevoJuego()">Nuevo Juego</p>
-                </button>
-                <button id="btn-desistir" class="boton desistir" type="button">
-                    <p class="texto-boton-desistir" onclick="desistir()">Desistir</p>
-                </button>
+                <div class="contenedor-boton-inicio-juego">
+                    <button id="iniciar-juego" class="boton inicio-juego" type="button" onclick="iniciarJuego(event)">
+                        <p class="texto-boton-iniciar-juego">Iniciar Juego</p>
+                    </button>
+                </div>
+                <div class="contenedor-boton-agregar-palabra">
+                    <button id="agregar-palabra" class="boton agregar" type="button" onclick="agregarPalabra(event)">
+                        <p class="texto-boton-agregar-palabra">Agregar Palabra</p>
+                    </button>
+                </div>
             </div>
-
         </form>
     </div>
 
@@ -167,7 +128,7 @@
                 rel="nofollow noreferrer noopener"><em>Flaticon</em></a></p>
     </footer>
 
-    <script src="ahorcado.js"></script>
+    <script src="inicio.js"></script>
 </body>
 
 </html>
