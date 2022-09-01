@@ -880,7 +880,8 @@ input#entrada {
 
 div#contenedor-comprobar {
     position: absolute;
-    width: 100%;
+    width: auto;
+    display: flex;
     top: 80%;
     left: 15%;
 }
