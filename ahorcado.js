@@ -87,6 +87,14 @@ function comprobar(){
         inputLetra.value = "";
     }
 
+    }else{
+        if(letraAComprobar === null){
+            alert("Error! Ingrese una letra.");
+        }else if(letraAComprobar.length > 1){
+            alert("Error! Ingrese una sola letra por favor.");
+        }else{
+            alert("Error! Intente de nuevo.");
+        }
     }
 }
 
