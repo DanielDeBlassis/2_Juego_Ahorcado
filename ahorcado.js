@@ -188,6 +188,66 @@ function letraTecleada() {
     }
 }
 
+//toma la letra y borra
+//Función para celular
+function entrada(event){
+    var input = document.getElementById("entrada");
+     tecla = (input.addEventListener) ? event.keyCode : event.which;
+    //Tecla de retroceso para borrar, siempre la permite
+    // if (tecla == 8) {
+    //     return true;
+    // }
+    //Solo se aceptan letras
+    patron = /[A-Za-z]/;
+
+    tecla_final = String.fromCharCode(tecla);
+    
+    if(patron.test(tecla_final)){
+
+    //capturo area de imagen de patíbulo
+    var imgPatibulo = document.getElementById("cont-patibulo");
+
+    //capturo area de palabras ausentes
+    var areaAusentes = document.getElementById("letras-ausentes");
+
+    if (intento < 7 && patron.test(tecla_final)) {
+        if (letraEsta(tecla_final)) {
+            if (yaFueTecleado(tecla_final.toUpperCase())) {
+                alert("Ya fue tecleado.");
+            } else {
+                colocarLetra(tecla_final.toUpperCase());
+                letrasIngresadas.push(tecla_final.toUpperCase());
+
+                if(palabraAzar.length === aciertos){
+                    showWin();
+                    showWinMessage();
+                    intentos = 8;
+                }
+            }
+
+        } else {
+            //agrego las letras ingresadas a un array para verificar y no descontar intentos
+            if (yaFueTecleado(tecla_final.toUpperCase())) {
+                alert("Ya fue tecleado. Pruebe con otra letra.");
+            } else {
+                imgPatibulo.innerHTML = `<img src="${'img/patibulo-' + intento + '.svg'}" alt="Patíbulo" title="Patíbulo">`;
+                areaAusentes.value += tecla_final.toUpperCase() + " ";
+                letrasIngresadas.push(tecla_final.toUpperCase());
+                intento += 1;
+            }
+        }
+    }else if(intento === 7){
+        imgPatibulo.innerHTML = `<img src="${'img/patibulo-' + intento + '.svg'}" alt="Patíbulo" title="Patíbulo">`;
+        areaAusentes.value += tecla_final.toUpperCase() + " ";
+        showLose();
+        showLoseMessage();
+        intento += 1;
+        imgPatibulo.innerHTML = `<img src="img/patibulo-8.png" alt="Patíbulo" title="Patíbulo">`;
+    }
+
+    }
+    input.value = "";
+}
 
 // ////////////VALIDACIÓN DEL TEXTAREA////////////
 //comprueba que solo sean ingresadas letras

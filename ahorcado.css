@@ -565,7 +565,7 @@ dialog#lose-dialog {
 /*Contenedor Letras Ausentes*/
 .contenedor-letras-ausentes {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
     padding: 0px;
     gap: 24px;
@@ -841,6 +841,11 @@ dialog#fail {
     margin: 0px;
     text-align: center;
     outline: none;
+}
+
+input#entrada {
+    position: absolute;
+    left: 30%;
 }
 
 .contenedor-formulario {
