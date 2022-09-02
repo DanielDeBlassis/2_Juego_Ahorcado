@@ -166,6 +166,8 @@ function soloLetras(event) {
 
 ///////////////NUEVO JUEGO/////////////////
 function nuevoJuego(){
+    var letrasQueNoEstan = document.getElementById("letras-ausentes");
+    letrasQueNoEstan.value = "";
     location.reload();
 }
 
