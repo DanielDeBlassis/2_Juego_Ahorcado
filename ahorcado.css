@@ -173,7 +173,7 @@ body::-webkit-scrollbar-thumb {
     width: 688px;
     height: 67px;
     left: 376px;
-    top: 886px;
+    top: 90%;
 }
 
 .boton.nuevo {
@@ -270,9 +270,21 @@ body::-webkit-scrollbar-thumb {
 }
 
 /*Botón e Input Comprobar*/
+div#contenedor-comprobar {
+    position: absolute;
+    top: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 input#letra-comprobar {
     border-color: cornflowerblue;
     border-radius: 10px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 32px;
 }
 
 input#letra-comprobar:focus {
@@ -285,7 +297,11 @@ button#btn-comprobar {
     color: white;
     border-color: cornflowerblue;
     border-radius: 10px;
+    width: 200px;
+    height: 45px;
+    margin-left: 20px;
 }
+
 button#btn-comprobar:hover {
     cursor: pointer;
     background: #246bea;
@@ -698,7 +714,7 @@ dialog#fail {
     width: 688px;
     height: 67px;
     left: 5%;
-    top: 85%;
+    top: 90%;
 }
 
 .contenedor-letras-ausentes {
@@ -814,12 +830,31 @@ dialog#fail {
         top: 230px;
     }
 
+/*Área Comprobar*/
     div#contenedor-comprobar {
     position: absolute;
     width: auto;
     top: 80%;
-    left: 30%;
-}
+    left: 5%;
+    }
+    input#letra-comprobar {
+    border-color: cornflowerblue;
+    border-radius: 10px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 30px;
+    width: 45%;
+    }
+    button#btn-comprobar {
+    background: cornflowerblue;
+    color: white;
+    border-color: cornflowerblue;
+    border-radius: 10px;
+    width: 130px;
+    height: 45px;
+    margin-left: 20px;
+    }
 
 }
 
@@ -876,14 +911,6 @@ dialog#fail {
 input#entrada {
     position: absolute;
     left: 30%;
-}
-
-div#contenedor-comprobar {
-    position: absolute;
-    width: auto;
-    display: flex;
-    top: 80%;
-    left: 15%;
 }
 
 .contenedor-formulario {
@@ -1177,6 +1204,33 @@ color: green;
 
     .lista>li {
         font-size: 1rem;
+    }
+
+/*Área Comprobar*/
+    div#contenedor-comprobar {
+    position: absolute;
+    width: auto;
+    display: flex;
+    top: 60%;
+    left: 15%;
+    }
+    input#letra-comprobar {
+    border-color: cornflowerblue;
+    border-radius: 10px;
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+    width: 45%;
+    }
+    button#btn-comprobar {
+    background: cornflowerblue;
+    color: white;
+    border-color: cornflowerblue;
+    border-radius: 10px;
+    width: 130px;
+    height: 25px;
+    margin-left: 20px;
     }
 
 }

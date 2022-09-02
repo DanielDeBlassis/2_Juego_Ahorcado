@@ -37,6 +37,8 @@ var intento = 1;
 
 function comprobar(){
 
+    var botonComprobar = document.getElementById("btn-comprobar");
+
     var inputLetra = document.getElementById("letra-comprobar");
 
     var letraAComprobar = document.getElementById("letra-comprobar").value;
@@ -61,6 +63,7 @@ function comprobar(){
                     showWin();
                     showWinMessage();
                     intentos = 8;
+                    botonComprobar.disabled = true;
                 }
             }
 
@@ -85,6 +88,7 @@ function comprobar(){
         intento += 1;
         imgPatibulo.innerHTML = `<img src="img/patibulo-8.png" alt="Patíbulo" title="Patíbulo">`;
         inputLetra.value = "";
+        botonComprobar.disabled = true;
     }
 
     }else{
@@ -239,14 +243,17 @@ function cambiarPortugues() {
             rel="nofollow noreferrer noopener">Aqui</a> você pode encontrar o repositório do projeto.
     </p></div>`;
 
-    //traduzco el placeholder
-    var aclara = document.getElementById("areaTexto");
-    aclara.placeholder = "Maximo 8 letras...";
+    //traduzco área comprobación
+    var contenedorLetrasAusentes = document.getElementById("cont-letras-ausentes");
 
-    //traduzco el texto de advertencia
-    var advertencia = document.getElementById("cont-advert");
-    advertencia.innerHTML = `<p class="texto-advertencia"><i id="exclamacion" class="fa fa-exclamation-circle"
-    aria-hidden="true"></i> Maximo 8 letras</p>`;
+    contenedorLetrasAusentes.innerHTML = `<textarea id="letras-ausentes" title="Letras que não são..." pattern="[A-Za-z]"
+                onkeypress='return soloLetras(event);' disabled></textarea>
+            <div id="contenedor-comprobar">
+            <input autofocus id="letra-comprobar" type="text" onkeypress="return soloLetras(event)" pattern="[a-zA-Z]"
+            onkeyup="javascript:this.value=this.value.toUpperCase();" 
+            maxlength="1" placeholder="Digite a Letra" id="entrada">
+            <button id="btn-comprobar" type="button" onclick="comprobar()">Verifica</button>
+            </div>`;
 }
 
 
